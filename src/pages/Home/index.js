@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './index.less'
 
-export default class Home extends Component{
-  render(){
-    return(
-      <div>
-        <h3>this is Home page!!</h3>
+export default class Home extends Component {
+  render() {
+    return (
+      <div className="home-wrap">
+        欢迎学习IMooc后台管理系统课程
       </div>
     )
   }
