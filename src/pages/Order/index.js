@@ -9,8 +9,7 @@ class Order extends Component {
   render() {
     return (
       <div style={{ width: '100%', textAlign: 'center', fontSize: '20px' }}>
-        this is Order page !!!
-
+        <div>this is Order page !!!</div>
         <Button type="primary" onClick={this.openOrderDetail}>订单详情</Button>
       </div>
     );
