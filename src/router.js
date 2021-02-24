@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import App from './App'
 import Login from './pages/Login'
 import Admin from './admin'
+import Home from './pages/Home'
 import Buttons from './pages/ui/Buttons'
 import Modals from './pages/ui/Modals'
 import Loadings from './pages/ui/Loadings'
@@ -13,6 +14,8 @@ import Tabs from './pages/ui/tabs'
 import Gallery from './pages/ui/gallery'
 import Carousel from './pages/ui/carousel'
 import Order from './pages/Order'
+import FormLogin from './pages/Form/login'
+import FormRegister from './pages/Form/register'
 import NoPage from './pages/NoPage'
 import Common from './common'
 import OrderDetail from './pages/Order/detail'
@@ -25,19 +28,23 @@ export default class IRouter extends Component {
         <Router>
           <App>
             <Route path="/login" component={Login} />
-            <Route path="/admin" render={() =>
+            <Route path="/" render={() =>
               <Admin>
                 <Switch>
-                  <Route path="/admin/ui/buttons" component={Buttons} />
-                  <Route path="/admin/ui/modals" component={Modals} />
-                  <Route path="/admin/ui/loadings" component={Loadings} />
-                  <Route path="/admin/ui/notification" component={Notice} />
-                  <Route path="/admin/ui/messages" component={Messages} />
-                  <Route path="/admin/ui/tabs" component={Tabs} />
-                  <Route path="/admin/ui/gallery" component={Gallery} />
-                  <Route path="/admin/ui/carousel" component={Carousel} />
-                  <Route path="/admin/order" component={Order} />
-                  <Route component={NoPage} />
+                  <Route path="/home" component={Home} />
+                  <Route path="/ui/buttons" component={Buttons} />
+                  <Route path="/ui/modals" component={Modals} />
+                  <Route path="/ui/loadings" component={Loadings} />
+                  <Route path="/ui/notification" component={Notice} />
+                  <Route path="/ui/messages" component={Messages} />
+                  <Route path="/ui/tabs" component={Tabs} />
+                  <Route path="/ui/gallery" component={Gallery} />
+                  <Route path="/ui/carousel" component={Carousel} />
+                  <Route path="/form/login" component={FormLogin} />
+                  <Route path="/form/reg" component={FormRegister} />
+                  <Route path="/order" component={Order} />
+                  <Redirect to="/home" />
+                  {/* <Route component={NoPage} /> */}
                 </Switch>
               </Admin>
             } />
