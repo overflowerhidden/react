@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Card, Form, Input, Button, Radio, InputNumber, Select, Tag, Switch, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
+import 'moment/locale/zh-cn';
+import locale from 'antd/es/date-picker/locale/zh_CN';
+
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -19,6 +22,8 @@ const tailLayout = {
     span: 16,
   },
 };
+
+const dateFormat = 'YYYY/MM/DD';
 
 const options = [{ value: 'gold' }, { value: 'lime' }, { value: 'green' }, { value: 'cyan' }];
 
@@ -41,11 +46,16 @@ class FormRegister extends Component {
       age: 18,
       state: 1,
       hobby: ['gold', 'cyan'],
-      merry: false,
+      merry: true,
       site: "我是小妖怪，逍遥又自在。",
-      date: '',
-      time: '12:30:00'
+      date: moment('2015/01/01'),
+      time: moment('10:00:00', 'HH:mm:ss')
     });
+  }
+
+  onChange = (date, dateString) => {
+    // date 就是原始的日期数值，dateString 就是我们需要的日期格式
+    console.log(date, dateString);
   }
 
   tagRender = (props) => {
@@ -115,17 +125,17 @@ class FormRegister extends Component {
               />
             </Form.Item>
 
-            {/* <Form.Item label="婚否" name="merry">
-              <Switch checked={false} />
-            </Form.Item> */}
+            <Form.Item label="婚否" name="merry" valuePropName="checked">
+              <Switch />
+            </Form.Item>
 
-            {/* <Form.Item label="日期" name="date">
-              <DatePicker size='default' />
+            <Form.Item label="日期" name="date">
+              <DatePicker locale={locale} format={dateFormat} onChange={this.onChange()} />
             </Form.Item>
 
             <Form.Item label="时间" name="time">
-              <TimePicker />
-            </Form.Item> */}
+              <TimePicker locale={locale} onChange={this.onChange} />
+            </Form.Item>
 
             <Form.Item label="联系地址" name="site">
               <TextArea rows={4} />
