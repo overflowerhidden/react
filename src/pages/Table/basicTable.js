@@ -82,6 +82,9 @@ export default class BasicTable extends Component {
     return (
       <div className="container">
         <Card title="基础表格">
+          <Table columns={columns} dataSource={data} pagination={false} />
+        </Card>
+        <Card title="带线表格">
           <Table bordered columns={columns} dataSource={data} pagination={false} />
         </Card>
       </div>
